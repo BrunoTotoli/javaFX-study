@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HelloController">
+   <children>
+      <Label layoutX="74.0" layoutY="47.0" text="Calculate Sum">
+         <font>
+            <Font name="Hack Bold Nerd Font Complete Mono Windows Compatible" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNumber1" layoutX="70.0" layoutY="145.0" promptText="First Number" />
+      <TextField fx:id="txtNumber2" layoutX="66.0" layoutY="200.0" prefHeight="25.0" prefWidth="149.0" promptText="Second Number" />
+      <Button fx:id="buttonSumCalculate" layoutX="93.0" layoutY="263.0" mnemonicParsing="false" onAction="#onButtonSumAction" text="Sum" />
+      <Label layoutX="85.0" layoutY="334.0" text="Result =" />
+      <Label fx:id="labelResult" layoutX="141.0" layoutY="334.0" />
+   </children>
+</AnchorPane>
