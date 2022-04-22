@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.gui.controllers.HelloController">
    <children>
@@ -19,5 +19,7 @@
       <Button fx:id="buttonSumCalculate" layoutX="93.0" layoutY="263.0" mnemonicParsing="false" onAction="#onButtonSumAction" text="Sum" />
       <Label layoutX="85.0" layoutY="334.0" text="Result =" />
       <Label fx:id="labelResult" layoutX="141.0" layoutY="334.0" />
+      <ComboBox fx:id="personComboBox" onAction="#onComboBoxPersonAction" prefWidth="150.0" promptText="Insert a person" />
+      <Button fx:id="buttonAll" layoutX="300.0" layoutY="13.0" mnemonicParsing="false" onAction="#onButtonAllAction" text="All" />
    </children>
 </AnchorPane>
