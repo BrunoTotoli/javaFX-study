@@ -9,17 +9,23 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.gui.controllers.HelloController">
    <children>
-      <Label layoutX="74.0" layoutY="47.0" text="Calculate Sum">
+      <Label layoutX="74.0" layoutY="47.0" text="Calculate">
          <font>
             <Font name="Hack Bold Nerd Font Complete Mono Windows Compatible" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNumber1" layoutX="70.0" layoutY="145.0" promptText="First Number" />
-      <TextField fx:id="txtNumber2" layoutX="66.0" layoutY="200.0" prefHeight="25.0" prefWidth="149.0" promptText="Second Number" />
-      <Button fx:id="buttonSumCalculate" layoutX="93.0" layoutY="263.0" mnemonicParsing="false" onAction="#onButtonSumAction" text="Sum" />
-      <Label layoutX="85.0" layoutY="334.0" text="Result =" />
-      <Label fx:id="labelResult" layoutX="141.0" layoutY="334.0" />
-      <ComboBox fx:id="personComboBox" onAction="#onComboBoxPersonAction" prefWidth="150.0" promptText="Insert a person" />
-      <Button fx:id="buttonAll" layoutX="300.0" layoutY="13.0" mnemonicParsing="false" onAction="#onButtonAllAction" text="All" />
+      <TextField fx:id="txtNumber1" layoutX="66.0" layoutY="150.0" prefHeight="25.0" prefWidth="158.0" promptText="First Number" />
+      <TextField fx:id="txtNumber2" layoutX="66.0" layoutY="188.0" prefHeight="25.0" prefWidth="158.0" promptText="Second Number" />
+      <Button fx:id="buttonSumCalculate" layoutX="101.0" layoutY="287.0" mnemonicParsing="false" onAction="#onButtonSumAction" text="Calculate" />
+      <Label layoutX="37.0" layoutY="339.0" text="Result =">
+         <font>
+            <Font name="Hack Regular Nerd Font Complete Mono Windows Compatible" size="20.0" />
+         </font></Label>
+      <Label fx:id="labelResult" ellipsisString="" layoutX="145.0" layoutY="334.0" prefHeight="35.0" prefWidth="59.0">
+         <font>
+            <Font name="Hack Bold Nerd Font Complete" size="20.0" />
+         </font></Label>
+      <ComboBox fx:id="typeComboBox" layoutX="66.0" layoutY="232.0" onAction="#onTypeComboBoxAction" prefHeight="25.0" prefWidth="158.0" promptText="Arithmetic Operation" />
+      <Button fx:id="buttonHistory" layoutX="453.0" layoutY="14.0" mnemonicParsing="false" onAction="#onButtonAllAction" prefHeight="25.0" prefWidth="122.0" text="Operators History" />
    </children>
 </AnchorPane>

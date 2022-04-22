@@ -2,22 +2,25 @@ package com.example.javafx.gui.controllers;
 
 import com.example.javafx.gui.util.Alerts;
 import com.example.javafx.gui.util.Constraints;
-import com.example.javafx.model.entities.Person;
+import com.example.javafx.model.entities.TypeImp;
+import com.example.javafx.model.enums.Type;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 
 public class HelloController implements Initializable {
 
+    Type type = null;
+    List<String> list = new ArrayList<>();
     @FXML
     private TextField txtNumber1;
 
@@ -32,13 +35,12 @@ public class HelloController implements Initializable {
     private Button buttonSumCalculate;
 
     @FXML
-    private Button buttonAll;
+    private Button buttonHistory;
 
     @FXML
     public void onButtonAllAction() {
-        for (Person person : personComboBox.getItems()) {
-            System.out.println(person);
-        }
+        String historyString = list.stream().collect(Collectors.joining("\n"));
+        Alerts.showAlert("Expression", "History", historyString.equals("") ? "No exists History" : historyString, Alert.AlertType.INFORMATION);
     }
 
     @FXML
@@ -46,8 +48,9 @@ public class HelloController implements Initializable {
         try {
             double number1 = Double.parseDouble(txtNumber1.getText());
             double number2 = Double.parseDouble(txtNumber2.getText());
-            double sum = number1 + number2;
+            double sum = TypeImp.arithmeticCalculation(type, number1, number2);
             labelResult.setText(String.format("%.2f", sum));
+            list.add(TypeImp.printCalculation(type, txtNumber1, txtNumber2, labelResult));
         } catch (NumberFormatException e) {
             Alerts.showAlert("Error", "ParseError", e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -55,39 +58,24 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    protected void onComboBoxPersonAction() {
-        Person person = personComboBox.getSelectionModel().getSelectedItem();
-        System.out.println(person);
+    protected void onTypeComboBoxAction() {
+        type = typeComboBox.getSelectionModel().getSelectedItem();
     }
 
     @FXML
-    private ComboBox<Person> personComboBox;
+    private ComboBox<Type> typeComboBox;
 
 
-    private ObservableList<Person> observableList;
+    private ObservableList<Type> observableList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Person> list = new ArrayList<>();
-        list.add(new Person(1, "Maria", "maria@gmail.com"));
-        list.add(new Person(1, "Marta", "marta@gmail.com"));
-        list.add(new Person(1, "Marita", "marita@gmail.com"));
-        list.add(new Person(1, "Marilia", "marilia@gmail.com"));
-        observableList = FXCollections.observableArrayList(list);
-        personComboBox.setItems(observableList);
+        observableList = FXCollections.observableArrayList(TypeImp.getTypeList());
+        typeComboBox.setItems(observableList);
         Constraints.setTextFieldDouble(txtNumber1);
         Constraints.setTextFieldDouble(txtNumber2);
         Constraints.setTextFieldMaxLength(txtNumber1, 12);
         Constraints.setTextFieldMaxLength(txtNumber2, 12);
 
-        Callback<ListView<Person>, ListCell<Person>> factory = lv -> new ListCell<Person>() {
-            @Override
-            protected void updateItem(Person item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty ? "" : item.getName());
-            }
-        };
-        personComboBox.setCellFactory(factory);
-        personComboBox.setButtonCell(factory.call(null));
     }
 }
